@@ -1,0 +1,38 @@
+---
+root: true
+parser: vue-eslint-parser
+parserOptions:
+  parser: "@typescript-eslint/parser"
+env:
+  node: true
+extends:
+- plugin:vue/strongly-recommended
+- eslint:recommended
+- "@vue/typescript/recommended"
+plugins:
+- "@typescript-eslint"
+rules:
+  semi:
+  - error
+  - never
+  "@typescript-eslint/no-unused-vars": error
+  vue/no-multiple-template-root: 'off'
+  quotes:
+  - error
+  - single
+  vue/script-indent:
+  - error
+  - 2
+  - baseIndent: 1
+  vue/block-lang:
+  - error
+  - script:
+      lang: ts
+  comma-dangle:
+  - error
+  - always-multiline
+overrides:
+- files:
+  - "*.vue"
+  rules:
+    indent: 'off'
