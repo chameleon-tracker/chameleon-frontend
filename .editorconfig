@@ -1,0 +1,19 @@
+#EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.diff]
+trim_trailing_whitespace = false
+
+[COMMIT_EDITMSG]
+trim_trailing_whitespace = false
+
+# Batch files use tabs for indentation
+[*.bat]
+indent_style = tab
