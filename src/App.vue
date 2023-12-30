@@ -25,11 +25,18 @@
       description_markup: 'ASCIIDOC',
     },
   ])
+
+  const handleProjectSubmitted = (projectData: Project) => {
+    projects.value.push(projectData)
+  }
 </script>
 
 <template>
   <NavBar msg="Kameleon" />
-  <ProjectsList :projects="projects" />
+  <ProjectsList 
+    @project-submitted="handleProjectSubmitted" 
+    :projects="projects"
+  />
 </template>
 
 <style scoped></style>
