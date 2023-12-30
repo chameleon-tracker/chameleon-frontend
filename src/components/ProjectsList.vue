@@ -25,6 +25,7 @@
 
       <div
         v-for="project in projects"
+        :key="project.id"
         class="mb-4 mx-20"
       >
         <div class="border-neutral-500 border-2 rounded-2xl  bg-slate-700">
