@@ -56,12 +56,13 @@
   const toast = useToast()
 
   const showCreateModal = ref(false)
-  const props = defineProps({
+  defineProps({
     projects: {
       type: Array<Project>,
       required: true,
     },
   })
+  const emit = defineEmits(['projectSubmitted'])
 
   const handleCreateClick = () => {
     console.log(showCreateModal.value)
@@ -70,7 +71,7 @@
   }
 
   const handleProjectSubmitted = (projectData: Project) => {
-    props.projects.push(projectData)
+    emit('projectSubmitted', projectData)
     toast.success(`Project ${projectData.title} created!`)
     showCreateModal.value = false
   }
