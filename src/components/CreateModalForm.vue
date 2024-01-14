@@ -99,7 +99,6 @@
     }
 
     const projectData = {
-      id: generateUniqueId(),
       title: title.value,
       description: description.value,
       description_markup: description_markup.value,
@@ -115,8 +114,4 @@
     emit('cancelButtonClicked', true)
   }
 
-
-  const generateUniqueId = () => {
-    return Math.floor(Math.random() * 1000000)
-  }
 </script>
