@@ -3,32 +3,40 @@
   import ProjectsList from './components/ProjectsList.vue'
   import NavBar from './components/NavBar.vue'
   import type { Project } from './api/types'
+  import { useToast } from 'vue-toastification'
 
 
-  const projects = ref<Project[]>([
-    {
-      id: '1',
-      title: 'Project 1 title',
-      description: 'This is the test project numero uno!',
-      description_markup: 'PLAIN',
-    },
-    {
-      id: '2',
-      title: 'Project 2 title',
-      description: 'This is the test project numero duo!',
-      description_markup: 'MARKDOWN',
-    },
-    {
-      id: '3',
-      title: 'Project 3 title',
-      description: 'This is the test project numero tres!',
-      description_markup: 'ASCIIDOC',
-    },
-  ])
+  const toast = useToast()
+
+
+  const projects = ref<Project[]>([])
+
+  const fetchProjects = () => {
+    fetch('http://127.0.0.1:8000/api/project')
+      .then(data => data.json())
+      .then(r => projects.value = r)
+  }
+  fetchProjects()
 
   const handleProjectSubmitted = (projectData: Project) => {
-    projects.value.push(projectData)
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+        {
+          title: projectData.title, 
+          description: projectData.description, 
+          description_markup: projectData.description_markup,
+        },
+      ),
+    }
+    fetch('http://127.0.0.1:8000/api/project', requestOptions)
+      .then(response => response.json())
+      .then(() => toast.success(`Project ${projectData.title} created!`))
+      .then(() => fetchProjects())
   }
+
+
 </script>
 
 <template>

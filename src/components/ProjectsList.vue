@@ -51,9 +51,7 @@
   import { ref } from 'vue'
   import CreateModal from './CreateModal.vue'
   import { Project } from '../api/types'
-  import { useToast } from 'vue-toastification'
 
-  const toast = useToast()
 
   const showCreateModal = ref(false)
   defineProps({
@@ -65,14 +63,11 @@
   const emit = defineEmits(['projectSubmitted'])
 
   const handleCreateClick = () => {
-    console.log(showCreateModal.value)
     showCreateModal.value = true
-    console.log(showCreateModal.value)
   }
 
   const handleProjectSubmitted = (projectData: Project) => {
     emit('projectSubmitted', projectData)
-    toast.success(`Project ${projectData.title} created!`)
     showCreateModal.value = false
   }
 </script>
