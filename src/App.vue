@@ -12,7 +12,7 @@
   const projects = ref<Project[]>([])
 
   const fetchProjects = () => {
-    fetch('http://127.0.0.1:8000/api/project')
+    fetch('/api/project')
       .then(data => data.json())
       .then(r => projects.value = r)
   }
@@ -24,13 +24,13 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(
         {
-          title: projectData.title, 
-          description: projectData.description, 
+          title: projectData.title,
+          description: projectData.description,
           description_markup: projectData.description_markup,
         },
       ),
     }
-    fetch('http://127.0.0.1:8000/api/project', requestOptions)
+    fetch('/api/project', requestOptions)
       .then(response => response.json())
       .then(() => toast.success(`Project ${projectData.title} created!`))
       .then(() => fetchProjects())
@@ -41,8 +41,8 @@
 
 <template>
   <NavBar msg="Kameleon" />
-  <ProjectsList 
-    @project-submitted="handleProjectSubmitted" 
+  <ProjectsList
+    @project-submitted="handleProjectSubmitted"
     :projects="projects"
   />
 </template>
