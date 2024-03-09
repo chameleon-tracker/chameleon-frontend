@@ -17,13 +17,15 @@ describe('Project Service', () => {
     const projectsListResponse = ref<Project[]>([
       {
         id: '1',
-        summary: 'Project 1',
+        name: 'Project 1',
+        summary: 'Start the whole thing',
         description: 'Project 1 Description',
         description_markup: 'PLAIN',
       },
       {
         id: '2',
-        summary: 'Project 2',
+        name: 'Project 2',
+        summary: 'Some summary',
         description: 'Project 2 Description',
         description_markup: 'PLAIN',
       },
