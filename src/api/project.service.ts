@@ -14,7 +14,7 @@ export const createProject = async (projectData: Project) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      title: projectData.title,
+      summary: projectData.summary,
       description: projectData.description,
       description_markup: projectData.description_markup,
     }),

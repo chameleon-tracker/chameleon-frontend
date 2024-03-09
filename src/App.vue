@@ -14,7 +14,7 @@
 
   const handleProjectSubmitted = (projectData: Project) => {
     createProject(projectData)
-      .then(() => toast.success(`Project ${projectData.title} created!`))
+      .then(() => toast.success(`Project ${projectData.summary} created!`))
       .then(() => fetchProjects(projects))
   }
 </script>
