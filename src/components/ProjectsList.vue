@@ -32,7 +32,10 @@
           <div
             class="rounded-t-2xl  rounded-b-md mb-3 p-1 pl-3 text-md truncate  bg-gradient-to-r from-slate-700 to-slate-800 clear-right"
           >
-            {{ project.title }}
+            {{ project.name }}
+          </div>
+          <div class="text-sm  truncate ml-3">
+            <span class="text-orange-400"> Summary: </span>{{ project.summary }}
           </div>
           <div class="text-sm  truncate ml-3">
             <span class="text-green-400"> Description: </span>{{ project.description }}

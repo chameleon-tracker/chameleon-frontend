@@ -5,19 +5,40 @@
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-4">
             <label
-              for="title"
+              for="name"
               class="block text-sm font-medium leading-6 text-white"
-            >Title</label>
+            >Name</label>
             <div class="mt-2">
               <div
                 class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 "
               >
                 <input
-                  v-model="title"
+                  v-model="name"
                   type="text"
-                  name="title"
-                  id="title"
-                  autocomplete="title"
+                  name="name"
+                  id="name"
+                  autocomplete="name"
+                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6 ml-2 overflow-ellipsis"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="sm:col-span-4">
+            <label
+              for="summary"
+              class="block text-sm font-medium leading-6 text-orange-400"
+            >Summary</label>
+            <div class="mt-2">
+              <div
+                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 "
+              >
+                <input
+                  v-model="summary"
+                  type="text"
+                  name="summary"
+                  id="summary"
+                  autocomplete="summary"
                   class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6 ml-2 overflow-ellipsis"
                 >
               </div>
@@ -79,12 +100,13 @@
     </div>
   </form>
 </template>
-  
+
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useToast } from 'vue-toastification'
 
-  const title = ref('')
+  const name = ref('')
+  const summary = ref('')
   const description = ref('')
   const description_markup = ref('PLAIN')
 
@@ -93,20 +115,21 @@
   const toast = useToast()
 
   const onSubmit = () => {
-    if (!title.value || !description.value || !description_markup.value) {
+    if (!summary.value || !description.value || !description_markup.value) {
       toast.error('All required fields must be filled')
       return
     }
 
     const projectData = {
-      title: title.value,
+      name: name.value,
+      summary: summary.value,
       description: description.value,
       description_markup: description_markup.value,
     }
 
     emit('projectSubmitted', projectData)
 
-    title.value = ''
+    summary.value = ''
     description.value = ''
   }
 

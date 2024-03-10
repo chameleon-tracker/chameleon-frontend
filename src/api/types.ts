@@ -1,6 +1,7 @@
 export interface Project {
     id: string,
-    title: string,
+    name: string,
+    summary: string,
     description: string,
     description_markup: 'PLAIN' | 'MARKDOWN' | 'ASCIIDOC'
 }
