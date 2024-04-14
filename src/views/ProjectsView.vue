@@ -11,7 +11,7 @@
       </button>
       <Teleport to="body">
         <!-- use the modal component, pass in the prop -->
-        <CreateModal
+        <CreateProjectModal
           :show="showCreateModal"
           @close="showCreateModal = false"
           @project-submitted="handleProjectSubmitted"
@@ -20,7 +20,7 @@
           <template #header>
             <h3>Create Project</h3>
           </template>
-        </CreateModal>
+        </CreateProjectModal>
       </Teleport>
 
       <div
@@ -52,25 +52,26 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import CreateModal from './CreateModal.vue'
-  import { Project } from '../api/types'
+  import { useToast } from 'vue-toastification'
+  import CreateProjectModal from '@/components/CreateProjectModal.vue'
+  import { createProject} from '@/api/project.service'
+  import { Project } from '@/api/types'
+  import {fetchProjects} from '@/api/project.service'
 
-
+  const toast = useToast()
+  const projects = ref<Project[]>([])
   const showCreateModal = ref(false)
-  defineProps({
-    projects: {
-      type: Array<Project>,
-      required: true,
-    },
-  })
-  const emit = defineEmits(['projectSubmitted'])
 
   const handleCreateClick = () => {
     showCreateModal.value = true
   }
 
   const handleProjectSubmitted = (projectData: Project) => {
-    emit('projectSubmitted', projectData)
+    createProject(projectData)
+      .then(() => toast.success(`Project ${projectData.name} created!`))
+      .then(() => fetchProjects(projects))
     showCreateModal.value = false
   }
+
+  fetchProjects(projects)
 </script>
