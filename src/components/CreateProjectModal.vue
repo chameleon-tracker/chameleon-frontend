@@ -44,7 +44,7 @@
                     K
                   </div>
                   <div class="mt-3 text-left sm:ml-4 sm:mt-0 sm:text-left">
-                    <CreateModalForm
+                    <CreateProjectModalForm
                       @project-submitted="handleProjectSubmitted"
                       @cancel-button-clicked="onCancel"
                     />
@@ -58,11 +58,11 @@
     </Dialog>
   </TransitionRoot>
 </template>
-  
+
 <script setup lang="ts">
   import { ref } from 'vue'
   import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
-  import CreateModalForm from './CreateModalForm.vue'
+  import CreateProjectModalForm from './CreateProjectModalForm.vue'
   import { Project } from '../api/types'
 
   const open = ref(false)
