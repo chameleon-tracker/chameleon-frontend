@@ -28,7 +28,7 @@
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div>
             <h1 class="logo ">
-              Chameleon
+              Kameleon
             </h1>
           </div>
           <div class="hidden sm:ml-6 sm:block">
