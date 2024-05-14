@@ -29,11 +29,15 @@
         class="mb-4 mx-20"
       >
         <div class="border-neutral-500 border rounded-2xl  bg-slate-700">
-          <div
-            class="rounded-t-2xl  rounded-b-md mb-3 p-1 pl-3 text-md truncate  bg-gradient-to-r from-slate-700 to-slate-800 clear-right"
+          <RouterLink
+            :to="{name: 'project.show', params: {id: project.id}}"
           >
-            {{ project.name }}
-          </div>
+            <div
+              class="rounded-t-2xl  rounded-b-md mb-3 p-1 pl-3 text-md truncate  bg-gradient-to-r from-slate-700 to-slate-800 clear-right"
+            >
+              {{ project.name }}
+            </div>
+          </RouterLink>
           <div class="text-sm  truncate ml-3">
             <span class="text-orange-400"> Summary: </span>{{ project.summary }}
           </div>
