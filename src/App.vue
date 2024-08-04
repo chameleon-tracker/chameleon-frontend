@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <NavBar msg="Chameleon" />
+  <NavBar msg="Kameleon" />
   <RouterView />
 </template>
 
