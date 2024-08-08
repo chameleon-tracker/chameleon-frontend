@@ -54,7 +54,7 @@
 
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { onBeforeMount, ref } from 'vue'
   import { useToast } from 'vue-toastification'
   import CreateProjectModal from '@/components/CreateProjectModal.vue'
   import { createProject} from '@/api/project.service'
@@ -76,5 +76,5 @@
     showCreateModal.value = false
   }
 
-  fetchProjects(projects)
+  onBeforeMount(() => fetchProjects(projects))
 </script>
