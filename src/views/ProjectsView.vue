@@ -13,7 +13,6 @@
         <!-- use the modal component, pass in the prop -->
         <CreateProjectModal
           :show="showCreateModal"
-          @close="showCreateModal = false"
           @project-submitted="handleProjectSubmitted"
           @cancel-button-clicked="showCreateModal = false"
         >
