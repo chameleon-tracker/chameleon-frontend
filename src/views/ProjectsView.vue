@@ -54,21 +54,38 @@
 
 
 <script setup lang="ts">
+/*
+imports
+*/
   import { onBeforeMount, ref } from 'vue'
   import { useToast } from 'vue-toastification'
-  import CreateProjectModal from '@/components/CreateProjectModal.vue'
-  import { createProject} from '@/api/project.service'
   import { Project } from '@/api/types'
+  import { createProject} from '@/api/project.service'
   import {fetchProjects} from '@/api/project.service'
+  import CreateProjectModal from '@/components/CreateProjectModal.vue'
 
+  /*
+toastification
+*/
   const toast = useToast()
-  const projects = ref<Project[]>([])
-  const showCreateModal = ref(false)
 
+  /*
+projects
+*/
+  const projects = ref<Project[]>([])
+  onBeforeMount(() => fetchProjects(projects))
+
+  /*
+create-project modal
+*/
+  const showCreateModal = ref(false)
   const handleCreateClick = () => {
     showCreateModal.value = true
   }
 
+  /*
+project submission
+*/
   const handleProjectSubmitted = (projectData: Project) => {
     createProject(projectData)
       .then(() => toast.success(`Project ${projectData.name} created!`))
@@ -76,5 +93,4 @@
     showCreateModal.value = false
   }
 
-  onBeforeMount(() => fetchProjects(projects))
 </script>

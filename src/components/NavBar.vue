@@ -131,12 +131,17 @@
 </template>
 
 <script setup lang="ts">
+/*
+imports
+*/
   import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
   import { useRoute } from 'vue-router'
 
+  /*
+navigation
+*/
   const route = useRoute()
-
   const navigation = [
     { name: 'dashboard', displayedName: 'Dashboard', current: route.path === '/', href: route.path},
     { name: 'project', displayedName: 'Projects', current: route.path === '/project', href: route.path },

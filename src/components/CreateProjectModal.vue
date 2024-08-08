@@ -60,19 +60,36 @@
 </template>
 
 <script setup lang="ts">
+/*
+imports
+*/
   import { ref } from 'vue'
   import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import CreateProjectModalForm from './CreateProjectModalForm.vue'
   import { Project } from '../api/types'
 
+  /*
+modal state
+*/
   const open = ref(false)
 
+  /*
+emits
+*/
   const emit = defineEmits(['projectSubmitted', 'cancelButtonClicked'])
 
+
+  /*
+project submission
+*/
   const handleProjectSubmitted = (projectData: Project) => {
     open.value = false
     emit('projectSubmitted', projectData)
   }
+
+  /*
+cancel button
+*/
   const onCancel = () => {
     emit('cancelButtonClicked', true)
   }

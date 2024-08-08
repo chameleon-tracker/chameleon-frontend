@@ -102,18 +102,35 @@
 </template>
 
 <script setup lang="ts">
+  /*
+imports
+*/
   import { ref } from 'vue'
   import { useToast } from 'vue-toastification'
 
+  /*
+modal form fields
+*/
   const name = ref('')
   const summary = ref('')
   const description = ref('')
   const description_markup = ref('PLAIN')
 
+  /*
+emits
+*/
   const emit = defineEmits(['projectSubmitted', 'cancelButtonClicked'])
 
+
+  /*
+toastification
+*/
   const toast = useToast()
 
+
+  /*
+project submission
+*/
   const onSubmit = () => {
     if (!summary.value || !description.value || !description_markup.value) {
       toast.error('All required fields must be filled')
@@ -133,6 +150,9 @@
     description.value = ''
   }
 
+  /*
+cancel button
+*/
   const onCancel = () => {
     emit('cancelButtonClicked', true)
   }
