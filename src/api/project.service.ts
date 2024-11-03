@@ -9,6 +9,12 @@ export const fetchProjects = async (projects: Ref<Project[]>) => {
     .then((r) => projects.value = r)
 }
 
+export const fetchProject = async (id: string, project: Ref<Project | undefined>) => {
+  return await fetch(`${BASE_URL}/${id}`)
+    .then((data) => data.json())
+    .then((r) =>  project.value = r)
+}
+
 export const createProject = async (projectData: Project) => {
   const requestOptions = {
     method: 'POST',
