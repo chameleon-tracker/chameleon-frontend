@@ -64,6 +64,7 @@ imports
   import { createProject} from '@/api/project.service'
   import {fetchProjects} from '@/api/project.service'
   import CreateProjectModal from '@/components/CreateProjectModal.vue'
+  import { projects } from '@/api/store'
 
   /*
 toastification
@@ -73,8 +74,9 @@ toastification
   /*
 projects
 */
-  const projects = ref<Project[]>([])
-  onBeforeMount(() => fetchProjects(projects))
+  onBeforeMount(() => {
+    fetchProjects(projects)
+  })
 
   /*
 create-project modal
