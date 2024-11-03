@@ -25,28 +25,29 @@
       <div
         v-for="project in projects"
         :key="project.id"
-        class="mb-4 mx-20"
+        class="mb-4 mx-20 project-tile"
       >
-        <div class="border-neutral-500 border rounded-2xl  bg-slate-700">
-          <RouterLink
-            :to="{name: 'project.show', params: {id: project.id}}"
-          >
+        <RouterLink
+          :to="{name: 'project.show', params: {id: project.id}}"
+        >
+          <div class="border-neutral-500 border rounded-2xl  bg-slate-700">
             <div
               class="rounded-t-2xl  rounded-b-md mb-3 p-1 pl-3 text-md truncate  bg-gradient-to-r from-slate-700 to-slate-800 clear-right"
             >
               {{ project.name }}
             </div>
-          </RouterLink>
-          <div class="text-sm  truncate ml-3">
-            <span class="text-orange-400"> Summary: </span>{{ project.summary }}
+
+            <div class="text-sm  truncate ml-3">
+              <span class="text-orange-400"> Summary: </span>{{ project.summary }}
+            </div>
+            <div class="text-sm  truncate ml-3">
+              <span class="text-green-400"> Description: </span>{{ project.description }}
+            </div>
+            <div class="text-xs  truncate ml-3 mb-2">
+              <span class="text-blue-400"> Markup: </span>{{ project.description_markup }}
+            </div>
           </div>
-          <div class="text-sm  truncate ml-3">
-            <span class="text-green-400"> Description: </span>{{ project.description }}
-          </div>
-          <div class="text-xs  truncate ml-3 mb-2">
-            <span class="text-blue-400"> Markup: </span>{{ project.description_markup }}
-          </div>
-        </div>
+        </RouterLink>
       </div>
     </div>
   </div>
@@ -94,3 +95,14 @@ project submission
   }
 
 </script>
+
+<style>
+  .project-tile:hover {
+      filter: drop-shadow(0 0 0.5em #64ff8b9e);
+  }
+
+  h1 {
+      font-size: 3.2em;
+      line-height: 1.1;
+  }
+</style>
